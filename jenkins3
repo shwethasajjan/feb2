@@ -1,0 +1,27 @@
+pipeline {
+    agent none
+	environment {
+        BRANCH = 'master'
+        GIT_REPO = 'https://github.com/shwethasajjan/jenkinstry.git'
+	}
+	stages {
+	   stage(test1) {
+	   agent { label 'master' }
+	     when {
+		    expression {git branch: env.BRANCH == master}
+			}
+		   steps {
+		      sh "echo test1 executes if branch is master"
+		   }
+	   }
+	   stage(test2) {
+	   agent { label 'master' }
+	     when {
+		    expression {git branch: env.BRANCH == master}
+			}
+		   steps {
+		      sh "echo test1 executes if branch is master"
+		   }
+	   }
+	 }
+}
